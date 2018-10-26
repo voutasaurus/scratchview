@@ -4,7 +4,7 @@ A view inside the `scratch` docker container.
 
 # Prerequisites
 
-Go must be installed.
+Go and Docker must be installed.
 
 # Usage
 
