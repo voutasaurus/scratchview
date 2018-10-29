@@ -61,7 +61,17 @@ ff02::2	ip6-allrouters
 
 ## Further usage
 
-To view the contents of a file or directory in the scratch container:
+To view the contents of a directory in the scratch container:
 ```
-docker run scratchview <filename/directory name>
+docker run scratchview ls <directory path>
+```
+
+Or a file:
+```
+docker run scratchview cat <file path>
+```
+
+To view the environment variables set:
+```
+docker run scratchview env
 ```
