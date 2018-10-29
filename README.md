@@ -7,24 +7,21 @@ A view inside the `scratch` docker container.
 Go and Docker must be installed.
 
 # Usage
-
 ```
-$ go get -u github.com/voutasaurus/scratchview
-$ cd ${GOPATH:-~/go}/src/github.com/voutasaurus/scratchview
 $ ./dockerbuild.sh
 ++ GOOS=linux
 ++ go build .
 ++ docker build -t scratchview .
-Sending build context to Docker daemon   2.13MB
+Sending build context to Docker daemon  2.187MB
 Step 1/3 : FROM scratch
  ---> 
 Step 2/3 : COPY scratchview /
  ---> Using cache
- ---> 508c6ea3c002
+ ---> dc8ea0a309df
 Step 3/3 : ENTRYPOINT ["/scratchview"]
  ---> Using cache
- ---> a99cbf0a47f7
-Successfully built a99cbf0a47f7
+ ---> a5f959489f67
+Successfully built a5f959489f67
 Successfully tagged scratchview:latest
 ++ rm scratchview
 ++ docker run scratchview
@@ -33,7 +30,13 @@ dev
 etc
 proc
 sys
-++ docker run scratchview dev
+++ docker run scratchview ls
+.dockerenv
+dev
+etc
+proc
+sys
+++ docker run scratchview ls dev
 core
 fd
 full
@@ -49,14 +52,18 @@ stdout
 tty
 urandom
 zero
-++ docker run scratchview etc/hosts
+++ docker run scratchview cat etc/hosts
 127.0.0.1	localhost
 ::1	localhost ip6-localhost ip6-loopback
 fe00::0	ip6-localnet
 ff00::0	ip6-mcastprefix
 ff02::1	ip6-allnodes
 ff02::2	ip6-allrouters
-172.17.0.2	6b1107661ca7
+172.17.0.2	a55f28dd7496
+++ docker run scratchview env
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOSTNAME=5c00aaf12b45
+HOME=/
 ```
 
 ## Further usage
